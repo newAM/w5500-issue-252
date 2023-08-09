@@ -13,14 +13,14 @@ fugit = "0.3.6"
 panic-probe = { version = "0.3", features = ["print-defmt"] }
 rp2040-boot2 = "0.3"
 rp2040-hal = { version="0.8", features=["rt", "critical-section-impl"] }
-w5500-hl = { version = "0.9.0", features = ["embedded-hal"] }
+w5500-hl = { version = "0.10.0", features = ["eh0"] }
 
 [profile.dev]
 codegen-units = 1
 debug = 2
-debug-assertions = true
+debug-assertions = false
 incremental = false
-opt-level = 1 # this has to be <= 1
+opt-level = 3 # this has to be <= 1
 overflow-checks = true
 
 [profile.dev.package."*"]

@@ -57,13 +57,13 @@ fn main() -> ! {
     let mut delay = cortex_m::delay::Delay::new(core.SYST, clocks.system_clock.freq().to_Hz());
 
     let mut w5500 = {
-        let mut chip_select = pins.gpio13.into_push_pull_output();
+        let mut chip_select = pins.gpio17.into_push_pull_output();
         chip_select.set_high().unwrap();
         let mut reset = pins.gpio11.into_push_pull_output();
         w5500_hl::ll::reset(&mut reset, &mut delay).unwrap();
-        let _mosi = pins.gpio15.into_mode::<FunctionSpi>();
-        let _sckl = pins.gpio14.into_mode::<FunctionSpi>();
-        let _miso = pins.gpio12.into_mode::<FunctionSpi>();
+        let _mosi = pins.gpio19.into_mode::<FunctionSpi>();
+        let _sckl = pins.gpio18.into_mode::<FunctionSpi>();
+        let _miso = pins.gpio16.into_mode::<FunctionSpi>();
         let spi_eth = Spi::<_, _, 8>::new(pac.SPI1).init(
             &mut pac.RESETS,
             clocks.peripheral_clock.freq(),
